@@ -220,3 +220,49 @@ var PhotoGalleryLib = (function() {
 
     return PhotoGalleryLib;
 })();
+var lastsize;
+if((window.innerWidth>=0)&&(window.innerWidth<=600)){
+		lastsize = 'small';
+}else if ((window.innerWidth>=601)&&(window.innerWidth<=800)){
+		lastsize = 'medium';
+}else if ((window.innerWidth>=801)&&(window.innerWidth<=Infinity)){
+		lastsize = 'large';
+}
+var table1 = PhotoGalleryLib.generateGrid(['images/image1.jpg','images/image2.jpg','images/image3.jpg','images/image4.jpg','images/image5.jpg','images/image6.jpg','images/image7.jpg','images/image8.jpg'], lastsize);
+        				 	document.body.appendChild(table1);
+
+		var en = 0;
+		function myfunc() {
+			var width;
+			   	var width = window.innerWidth;
+			   	var size;
+
+        			if ((width >= 0)&& (width <= 600) ){
+            			size = 'small';
+        			} else if ((width >= 601) && (width <= 800)) {
+           				 size =  'medium';
+        			} else if ((width >= 801) && (width <= Infinity)) {
+            			 size =  'large';
+        			} else {
+            				console.error('Invalid viewport width.');
+        			}
+        			if(en == 0){
+        					en = en + 1;
+        			}else{
+        				if(size != lastsize){
+        				  	table1.remove(table1);
+
+        					console.log(size);
+			   	 table1 =  PhotoGalleryLib.generateGrid(['images/image1.jpg','images/image2.jpg','images/image3.jpg','images/image4.jpg','images/image5.jpg','images/image6.jpg','images/image7.jpg','images/image8.jpg'], size);	
+
+        				 	document.body.appendChild(table1);
+        					en = 0;
+        					lastsize = size;
+        				}
+        			}
+
+        	//		document.body.removeChild(PhotoGalleryLib.generateGrid(['images/image1.jpg','images/image2.jpg','images/image3.jpg','images/image4.jpg','images/image5.jpg','images/image6.jpg','images/image7.jpg','images/image8.jpg'], 
+	//size));
+    			};	
+       // 			document.body.appendChild(PhotoGalleryLib.generateGrid(['images/image1.jpg','images/image2.jpg','images/image3.jpg','images/image4.jpg','images/image5.jpg','images/image6.jpg','images/image7.jpg','images/image8.jpg'], 
+	//myfunc()));
