@@ -1,0 +1,2 @@
+	String mainString = "ubc";
+	String bag = "ece";
